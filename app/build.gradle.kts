@@ -1,17 +1,13 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.newsly.android.application)
+    alias(libs.plugins.newsly.android.application.compose)
 }
 
 android {
     namespace = "com.instantsystem.newsly"
-    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.instantsystem.newsly"
-        minSdk = 30
-        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -27,15 +23,17 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+
+    packaging {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        compose = true
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 }
 
