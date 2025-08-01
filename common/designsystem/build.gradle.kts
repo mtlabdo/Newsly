@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.instantsystem.newsly.app.common.designsystem"
+    namespace = "com.instantsystem.newsly.common.designsystem"
 }
 
 dependencies {

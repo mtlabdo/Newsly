@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.instantsystem.newsly.app.common.ui"
+    namespace = "com.instantsystem.newsly.common.ui"
 }
 
 dependencies {
-    implementation(projects.appCommon.designsystem)
+    implementation(projects.common.designsystem)
 
 
     androidTestImplementation(libs.androidx.junit)

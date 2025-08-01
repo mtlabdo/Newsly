@@ -10,8 +10,8 @@ android {
 
 dependencies {
 
-    implementation(projects.appCommon.designsystem)
-    implementation(projects.appCommon.ui)
+    implementation(projects.common.designsystem)
+    implementation(projects.common.ui)
 
 
     testImplementation(libs.junit)

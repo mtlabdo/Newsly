@@ -24,7 +24,8 @@ rootProject.name = "Newsly"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
-include(":app-common:designsystem")
-include(":app-common:ui")
+include(":common:designsystem")
+include(":common:ui")
 include(":app-feature:home")
 include(":common:remote")
+include(":common:core")
