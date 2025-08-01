@@ -51,5 +51,9 @@ gradlePlugin {
             id = "newsly.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidLibraryCompose") {
+            id = libs.plugins.newsly.android.library.compose.get().pluginId
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
     }
 }

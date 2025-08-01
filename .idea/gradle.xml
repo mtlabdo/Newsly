@@ -23,6 +23,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app-common" />
+            <option value="$PROJECT_DIR$/app-common/designsystem" />
+            <option value="$PROJECT_DIR$/app-common/ui" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
           </set>
