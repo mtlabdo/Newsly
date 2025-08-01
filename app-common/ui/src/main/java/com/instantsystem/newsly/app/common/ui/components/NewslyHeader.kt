@@ -31,7 +31,7 @@ fun NewslyHeader(modifier: Modifier = Modifier) {
         )
         Text(
             text = "Newsly", // TODO MAKE STRING RESOURCES WITH TRANSLATE
-            style = MaterialTheme.typography.headlineSmall,
+            style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(
                 bottom = NewslyHeaderTextPaddingBottom
             ),
@@ -41,6 +41,6 @@ fun NewslyHeader(modifier: Modifier = Modifier) {
 }
 
 private val NewslyHeaderTextPaddingStart: Dp = 8.dp
-private val NewslyHeaderTitleIconSize: Dp = 24.dp
+private val NewslyHeaderTitleIconSize: Dp = 32.dp
 private val NewslyHeaderTextPaddingBottom: Dp = 4.dp
 
