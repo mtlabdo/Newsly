@@ -1,4 +1,3 @@
-
 import com.instantsystem.newsly.configureKotlinJvm
 import com.instantsystem.newsly.libs
 import org.gradle.api.Plugin
