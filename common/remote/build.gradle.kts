@@ -9,7 +9,8 @@ android {
 
 dependencies {
 
-    implementation(projects.common.designsystem)
+    implementation(projects.common.core)
+
 
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.android)

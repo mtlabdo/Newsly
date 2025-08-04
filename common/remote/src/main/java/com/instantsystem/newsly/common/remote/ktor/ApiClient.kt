@@ -1,4 +1,4 @@
-package com.instantsystem.newsly.common.network.ktor
+package com.instantsystem.newsly.common.remote.ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.*
@@ -14,25 +14,26 @@ import io.ktor.http.contentType
 import kotlinx.serialization.json.Json
 import io.ktor.serialization.kotlinx.json.json
 
-
 object KtorClient {
-    const val BASE_URL: String = "https://newsapi.org/v2/"
-    const val TIMEOUT: Long = 10000
+    private const val BASE_URL: String = "https://newsapi.org/v2/"
+    private const val TIMEOUT: Long = 10000
 
-    fun create(): HttpClient {
+    fun create(
+        isDebug: Boolean = false
+    ): HttpClient {
         return HttpClient(Android) {
+            expectSuccess = true
             defaultRequest {
                 url(BASE_URL)
                 contentType(ContentType.Application.Json)
             }
-            expectSuccess = false
             install(HttpTimeout) {
                 connectTimeoutMillis = TIMEOUT
                 requestTimeoutMillis = TIMEOUT
             }
             install(Logging) {
                 logger = Logger.ANDROID
-                level = LogLevel.BODY // TODO ADD DEBUG CHECK
+                level = if (isDebug) LogLevel.BODY else LogLevel.NONE
                 logger = object : Logger {
                     override fun log(message: String) {
                         println(message)
@@ -45,12 +46,9 @@ object KtorClient {
                     explicitNulls = true
                     isLenient = true
                     encodeDefaults = true
+                    classDiscriminator = "status"
                 })
             }
-
-            // TODO / ADD VALIDATOR EXCEPTIONS
-
         }
     }
 }
-
