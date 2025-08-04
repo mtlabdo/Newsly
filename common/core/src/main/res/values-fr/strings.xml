@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_core_error_open_link">Impossible d’ouvrir le lien</string>
+</resources>
