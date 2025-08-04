@@ -1,4 +1,4 @@
-package com.instantsystem.common.network
+package com.instantsystem.newsly.app.feature.detail
 
 import org.junit.Test
 

@@ -12,9 +12,9 @@ data class NewsResponse(
 @Serializable
 data class ArticleDto(
     val title: String,
-    val description: String?,
+    val description: String? = null,
     val url: String,
-    val urlToImage: String?,
+    val urlToImage: String? = null,
     val publishedAt: String,
     val source: SourceDto,
     val author: String? = null,
@@ -23,6 +23,6 @@ data class ArticleDto(
 
 @Serializable
 data class SourceDto(
-    val id: String?,
+    val id: String? = null,
     val name: String
 )

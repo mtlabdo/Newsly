@@ -19,7 +19,10 @@ dependencies {
     implementation(libs.kotlin.serialization.json)
     implementation(libs.ktor.serialization.json)
 
-
-    testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.ktor.client.mock)
+    testImplementation(libs.koin.test.junit4)
 
 }

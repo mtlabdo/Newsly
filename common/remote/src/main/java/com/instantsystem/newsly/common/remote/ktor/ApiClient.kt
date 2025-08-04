@@ -16,7 +16,7 @@ import io.ktor.serialization.kotlinx.json.json
 
 object KtorClient {
     private const val BASE_URL: String = "https://newsapi.org/v2/"
-    private const val TIMEOUT: Long = 10000
+    const val TIMEOUT: Long = 10000
 
     fun create(
         isDebug: Boolean = false

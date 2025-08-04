@@ -9,6 +9,7 @@ import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
+import io.ktor.http.HttpStatusCode
 
 class NewsApiService(
     private val client: HttpClient,
@@ -25,9 +26,9 @@ class NewsApiService(
             }.body<NewsResponse>()
            response
         } catch (e: ClientRequestException) {
-            when (e.response.status.value) {
-                401 -> throw NewsException(NewsError.AUTH)
-                429 -> throw NewsException(NewsError.NO_DATA)
+            when (e.response.status) {
+                HttpStatusCode.Unauthorized -> throw NewsException(NewsError.AUTH)
+                HttpStatusCode.TooManyRequests -> throw NewsException(NewsError.LIMIT)
                 else -> throw NewsException(NewsError.UNKNOWN)
             }
         } catch (e: Exception) {
