@@ -3,7 +3,7 @@ package com.instantsystem.newsly.designsystem.resources.type
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import com.instantsystem.newsly.app.common.designsystem.R
+import com.instantsystem.newsly.common.designsystem.R
 
 val quickSandLightFont = Font(R.font.quicksand_regular, FontWeight.Light)
 internal val quickSandRegularFont = Font(R.font.quicksand_regular, FontWeight.Normal)
