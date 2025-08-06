@@ -1,5 +1,6 @@
 package com.instantsystem.common.core.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -43,6 +44,7 @@ class BrowserNavigator(
         }
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun canHandleIntent(intent: Intent): Boolean {
         return try {
             val packageManager = context.packageManager
