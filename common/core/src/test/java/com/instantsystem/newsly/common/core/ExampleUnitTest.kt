@@ -1,4 +1,4 @@
-package com.instantsystem.common.core
+package com.instantsystem.newsly.common.core
 
 import org.junit.Test
 

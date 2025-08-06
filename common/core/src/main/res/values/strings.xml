@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="common_core_error_open_link">Unable to open the link</string>
+    <string name="common_core_error_invalid_url">Invalid URL</string>
+    <string name="common_core_error_no_app_to_open_link">No application available to open the link</string>
+
 </resources>
