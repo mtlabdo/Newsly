@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -20,5 +21,14 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Newsly"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
- 
+include(":common:designsystem")
+include(":common:ui")
+include(":app-feature:home")
+include(":common:remote")
+include(":common:core")
+include(":common:domain")
+include(":common:data")
+include(":app-feature:detail")

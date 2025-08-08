@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_ui_error_network">Problème de connexion internet</string>
+    <string name="common_ui_error_api_key">Erreur d\'authentification</string>
+    <string name="common_ui_error_no_data">Aucune donnée disponible</string>
+    <string name="common_ui_error_limit">Limite de requêtes atteinte. Veuillez réessayer plus tard.</string>
+    <string name="common_ui_error_server">Erreur du serveur (Code: %1$d)</string>
+    <string name="common_ui_error_unknown">Une erreur inattendue s\'est produite</string>
+    <string name="common_ui_loading_news">Chargement de l\'actualité est en cours</string>
+    <string name="common_ui_retry">Réessayer</string>
+    <string name="common_ui_load">Actualiser</string>
+    <string name="common_ui_error_title">Erreur !</string>
+
+</resources>
