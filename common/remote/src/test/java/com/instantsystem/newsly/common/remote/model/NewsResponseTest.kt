@@ -2,10 +2,10 @@ package com.instantsystem.newsly.common.remote.model
 
 import kotlinx.serialization.json.Json
 import org.junit.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
+import com.google.common.truth.Truth.assertThat
 
 class NewsResponseTest {
+
     private val json = Json {
         ignoreUnknownKeys = true
         explicitNulls = true
@@ -13,7 +13,6 @@ class NewsResponseTest {
         encodeDefaults = true
         classDiscriminator = "status"
     }
-
 
     @Test
     fun `should serialize and deserialize NewsResponse correctly`() {
@@ -27,15 +26,14 @@ class NewsResponseTest {
         val serialized = json.encodeToString(NewsResponse.serializer(), newsResponse)
         val deserialized = json.decodeFromString(NewsResponse.serializer(), serialized)
 
-        assertEquals(newsResponse.status, deserialized.status)
-        assertEquals(newsResponse.totalResults, deserialized.totalResults)
-        assertEquals(newsResponse.articles.size, deserialized.articles.size)
-        assertEquals(newsResponse.articles[0].title, deserialized.articles[0].title)
+        assertThat(deserialized.status).isEqualTo(newsResponse.status)
+        assertThat(deserialized.totalResults).isEqualTo(newsResponse.totalResults)
+        assertThat(deserialized.articles).hasSize(newsResponse.articles.size)
+        assertThat(deserialized.articles[0].title).isEqualTo(newsResponse.articles[0].title)
     }
 
     @Test
     fun `should handle articles with minimal required fields`() {
-
         val minimalArticleJson = """
         {
             "title": "‘Knives out’: Switzerland descends",
@@ -47,19 +45,18 @@ class NewsResponseTest {
         }
         """.trimIndent()
 
-        // When
         val result = json.decodeFromString<ArticleDto>(minimalArticleJson)
 
-        // Then
-        assertEquals("‘Knives out’: Switzerland descends", result.title)
-        assertEquals("https://www.ft.com/content/6804c076-4961-4373-a4f8-1e59ab5d7f8b", result.url)
-        assertEquals("2025-08-03T11:57:02Z", result.publishedAt)
-        assertEquals("Financial Times", result.source.name)
-        assertNull(result.description)
-        assertNull(result.urlToImage)
-        assertNull(result.author)
-        assertNull(result.content)
-        assertNull(result.source.id)
+        assertThat(result.title).isEqualTo("‘Knives out’: Switzerland descends")
+        assertThat(result.url).isEqualTo("https://www.ft.com/content/6804c076-4961-4373-a4f8-1e59ab5d7f8b")
+        assertThat(result.publishedAt).isEqualTo("2025-08-03T11:57:02Z")
+        assertThat(result.source.name).isEqualTo("Financial Times")
+
+        assertThat(result.description).isNull()
+        assertThat(result.urlToImage).isNull()
+        assertThat(result.author).isNull()
+        assertThat(result.content).isNull()
+        assertThat(result.source.id).isNull()
     }
 }
 

@@ -13,8 +13,6 @@ interface INetworkChecker {
 class NetworkChecker(
     private val context: Context
 ) : INetworkChecker {
-    val connectivityManager =
-        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
     override fun isNetworkAvailable(): Boolean {

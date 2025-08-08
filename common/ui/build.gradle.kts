@@ -10,7 +10,14 @@ android {
 dependencies {
     implementation(projects.common.designsystem)
 
+    api(projects.common.core)
+    api(libs.koin.android)
+    api(libs.koin.androidX.compose)
 
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    api(libs.androidx.lifecycle.compose.runtime)
+    api(libs.coil.kt.compose)
+
+
+    api(libs.androidx.lifecycle.viewmodel.android)
+
 }

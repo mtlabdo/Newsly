@@ -1,5 +1,6 @@
 package com.instantsystem.newsly.common.remote.api
 
+import com.google.common.truth.Truth.assertThat
 import com.instantsystem.common.core.ConfigConstants
 import com.instantsystem.common.core.exception.NewsError
 import com.instantsystem.common.core.exception.NewsException
@@ -24,8 +25,6 @@ import org.koin.dsl.module
 import org.koin.test.KoinTest
 import org.koin.test.KoinTestRule
 import org.koin.test.inject
-import kotlin.test.assertEquals
-import kotlin.test.fail
 
 class NewsApiServiceKoinTestUtilities : KoinTest {
 
@@ -37,9 +36,7 @@ class NewsApiServiceKoinTestUtilities : KoinTest {
     }
 
     private val testModule = module {
-        single<HttpClient> {
-            createTestKtorClient()
-        }
+        single<HttpClient> { createTestKtorClient() }
         single(ConfigConstants.debugModeNamedKey) { true }
         single(ConfigConstants.newsApiNamedKey) { testApiKey }
 
@@ -50,42 +47,42 @@ class NewsApiServiceKoinTestUtilities : KoinTest {
             )
         }
     }
-    private val newsApiService: INewsApiService by inject()
 
+    private val newsApiService: INewsApiService by inject()
 
     @Test
     fun `should validate module configuration`() {
         val debugMode: Boolean by inject(ConfigConstants.debugModeNamedKey)
         val apiKey: String by inject(ConfigConstants.newsApiNamedKey)
-        assertEquals(true, debugMode)
-        assertEquals(testApiKey, apiKey)
+
+        assertThat(debugMode).isTrue()
+        assertThat(apiKey).isEqualTo(testApiKey)
     }
 
     @Test
     fun `getTopHeadlines should return successful response`() = runTest {
-        // When
         val result = newsApiService.getTopHeadlines("en")
 
-        // Then
-        assertEquals("ok", result.status)
-        assertEquals(2, result.totalResults)
-        assertEquals(2, result.articles.size)
-        assertEquals(
-            "‘Knives out’: Switzerland descends into blame game after US tariff shock - Financial Times",
-            result.articles[0].title
+        assertThat(result.status).isEqualTo("ok")
+        assertThat(result.totalResults).isEqualTo(2)
+        assertThat(result.articles).hasSize(2)
+
+        assertThat(result.articles[0].title).isEqualTo(
+            "‘Knives out’: Switzerland descends into blame game after US tariff shock - Financial Times"
         )
-        assertEquals("Financial Times", result.articles[0].source.name)
+        assertThat(result.articles[0].source.name).isEqualTo("Financial Times")
     }
 
     @Test
     fun `should handle service errors correctly`() = runTest {
         val errorClient = createErrorMockHttpClient()
         val errorService = NewsApiService(errorClient, testApiKey)
+
         try {
             errorService.getTopHeadlines("en")
-            assert(false) { "Should have thrown NewsException" }
+            assertThat("Should have thrown NewsException").isNull() // Force fail
         } catch (e: NewsException) {
-            assertEquals(NewsError.AUTH, e.errorType)
+            assertThat(e.errorType).isEqualTo(NewsError.AUTH)
         }
     }
 
@@ -96,11 +93,10 @@ class NewsApiServiceKoinTestUtilities : KoinTest {
 
         try {
             service.getTopHeadlines("en")
-            fail("Should have thrown NewsException")
+            assertThat("Should have thrown NewsException").isNull() // Force fail
         } catch (e: NewsException) {
-            assertEquals(NewsError.UNKNOWN, e.errorType)
+            assertThat(e.errorType).isEqualTo(NewsError.UNKNOWN)
         }
-
     }
 
     @Test
@@ -110,12 +106,13 @@ class NewsApiServiceKoinTestUtilities : KoinTest {
 
         try {
             service.getTopHeadlines("en")
-            fail("Should have thrown NewsException")
+            assertThat("Should have thrown NewsException").isNull() // Force fail
         } catch (e: NewsException) {
-            assertEquals(NewsError.LIMIT, e.errorType)
+            assertThat(e.errorType).isEqualTo(NewsError.LIMIT)
         }
     }
 }
+
 
 private fun createErrorMockHttpClient(): HttpClient {
     val mockEngine = MockEngine {

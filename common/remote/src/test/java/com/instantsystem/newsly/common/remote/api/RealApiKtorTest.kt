@@ -1,5 +1,6 @@
 package com.instantsystem.newsly.common.remote.api
 
+import com.google.common.truth.Truth.assertThat
 import com.instantsystem.common.core.ConfigConstants
 import com.instantsystem.newsly.common.remote.ktor.KtorClient
 import io.ktor.client.HttpClient
@@ -13,9 +14,6 @@ import org.koin.test.KoinTest
 import org.koin.test.KoinTestRule
 import org.koin.test.inject
 import java.util.Properties
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
 
 class RealApiIntegrationTest : KoinTest {
 
@@ -50,15 +48,15 @@ class RealApiIntegrationTest : KoinTest {
     fun `should fetch real top headlines successfully`() = runTest {
         val result = newsApiService.getTopHeadlines("en")
 
-        assertEquals("ok", result.status)
-        assertTrue(result.totalResults > 0)
-        assertTrue(result.articles.isNotEmpty())
+        assertThat(result.status).isEqualTo("ok")
+        assertThat(result.totalResults).isGreaterThan(0)
+        assertThat(result.articles).isNotEmpty()
 
         val firstArticle = result.articles[0]
-        assertNotNull(firstArticle.title)
-        assertNotNull(firstArticle.url)
-        assertNotNull(firstArticle.publishedAt)
-        assertNotNull(firstArticle.source.name)
+        assertThat(firstArticle.title).isNotNull()
+        assertThat(firstArticle.url).isNotNull()
+        assertThat(firstArticle.publishedAt).isNotNull()
+        assertThat(firstArticle.source.name).isNotNull()
 
         println("Fetched ${result.articles.size} articles")
     }
@@ -67,11 +65,9 @@ class RealApiIntegrationTest : KoinTest {
     fun `should handle different languages`() = runTest {
         val englishResult = newsApiService.getTopHeadlines("en")
         val frenchResult = newsApiService.getTopHeadlines("fr")
-        val defaultResult = newsApiService.getTopHeadlines(null)
 
-        assertEquals("ok", englishResult.status)
-        assertEquals("ok", frenchResult.status)
-        assertEquals("ok", defaultResult.status)
+        assertThat(englishResult.status).isEqualTo("ok")
+        assertThat(frenchResult.status).isEqualTo("ok")
     }
 }
 

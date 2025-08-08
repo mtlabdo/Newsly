@@ -1,5 +1,6 @@
 package com.instantsystem.newsly.common.core.di
 
+import com.google.common.truth.Truth.assertThat
 import com.instantsystem.common.core.di.DefaultDispatcher
 import com.instantsystem.common.core.di.IoDispatcher
 import com.instantsystem.common.core.di.MainDispatcher
@@ -9,9 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import org.junit.Test
 import org.koin.dsl.koinApplication
 import org.koin.test.KoinTest
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-
 
 class DispatcherCoroutinesModulesTest : KoinTest {
 
@@ -25,16 +23,14 @@ class DispatcherCoroutinesModulesTest : KoinTest {
         val mainDispatcher = app.koin.get<CoroutineDispatcher>(MainDispatcher)
         val defaultDispatcher = app.koin.get<CoroutineDispatcher>(DefaultDispatcher)
 
-        assertNotNull(ioDispatcher)
-        assertNotNull(mainDispatcher)
-        assertNotNull(defaultDispatcher)
+        assertThat(ioDispatcher).isNotNull()
+        assertThat(mainDispatcher).isNotNull()
+        assertThat(defaultDispatcher).isNotNull()
 
-        assertEquals(Dispatchers.IO, ioDispatcher)
-        assertEquals(Dispatchers.Main, mainDispatcher)
-        assertEquals(Dispatchers.Default, defaultDispatcher)
+        assertThat(ioDispatcher).isEqualTo(Dispatchers.IO)
+        assertThat(mainDispatcher).isEqualTo(Dispatchers.Main)
+        assertThat(defaultDispatcher).isEqualTo(Dispatchers.Default)
     }
-
-
 
     @Test
     fun `should provide singletons for dispatchers`() {
@@ -45,6 +41,6 @@ class DispatcherCoroutinesModulesTest : KoinTest {
         val ioDispatcher1 = app.koin.get<CoroutineDispatcher>(IoDispatcher)
         val ioDispatcher2 = app.koin.get<CoroutineDispatcher>(IoDispatcher)
 
-        assertEquals(ioDispatcher1, ioDispatcher2)
+        assertThat(ioDispatcher1).isSameInstanceAs(ioDispatcher2)
     }
 }

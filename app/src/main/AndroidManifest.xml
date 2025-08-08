@@ -14,7 +14,6 @@
         <activity
             android:name=".app.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.Newsly">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +24,6 @@
 
 
     <queries>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="http" />
-        </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.BROWSABLE" />

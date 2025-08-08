@@ -15,7 +15,7 @@ import com.instantsystem.newsly.designsystem.theme.newslyDarkColors
 import com.instantsystem.newsly.designsystem.theme.newslyLightColors
 
 @Composable
-fun LsmobileAppTheme(darkTheme: Boolean, content: @Composable () -> Unit) {
+fun NewslyAppTheme(darkTheme: Boolean, content: @Composable () -> Unit) {
 
     val newslyColors = if (darkTheme) newslyDarkColors else newslyLightColors
 

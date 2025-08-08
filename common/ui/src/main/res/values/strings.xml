@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_ui_error_network">Internet connection problem</string>
+    <string name="common_ui_error_api_key">Authentication error</string>
+    <string name="common_ui_error_no_data">No data available</string>
+    <string name="common_ui_error_limit">Request limit reached. Please try again later.</string>
+    <string name="common_ui_error_server">Server error (Code: %1$d)</string>
+    <string name="common_ui_error_unknown">An unexpected error occurred</string>
+    <string name="common_ui_loading_news">Loading news…</string>
+    <string name="common_ui_retry">Retry</string>
+    <string name="common_ui_load">Refresh</string>
+    <string name="common_ui_error_title">Error !</string>
+</resources>

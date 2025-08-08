@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_feature_detail_title">Détail de l’article</string>
+    <string name="app_feature_detail_read_more">Lire l’article complet</string>
+</resources>

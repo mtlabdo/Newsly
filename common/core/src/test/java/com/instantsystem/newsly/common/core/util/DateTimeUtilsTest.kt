@@ -1,11 +1,10 @@
 package com.instantsystem.newsly.common.core.util
 
+import com.google.common.truth.Truth.assertThat
 import com.instantsystem.common.core.util.DateTimeUtils
 import org.junit.Test
 import java.time.ZonedDateTime
 import java.util.Locale
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class DateTimeUtilsTest {
 
@@ -15,7 +14,7 @@ class DateTimeUtilsTest {
 
         val result = DateTimeUtils.formatToIsoDate(isoDateTime)
 
-        assertEquals("2025-08-03", result)
+        assertThat(result).isEqualTo("2025-08-03")
     }
 
     @Test
@@ -24,7 +23,7 @@ class DateTimeUtilsTest {
 
         val result = DateTimeUtils.formatToIsoDate(isoDateTime)
 
-        assertEquals("2025-08-03", result)
+        assertThat(result).isEqualTo("2025-08-03")
     }
 
     @Test
@@ -33,7 +32,7 @@ class DateTimeUtilsTest {
 
         val result = DateTimeUtils.formatToIsoDate(invalidDateTime)
 
-        assertEquals("", result)
+        assertThat(result).isEmpty()
     }
 
     @Test
@@ -42,7 +41,7 @@ class DateTimeUtilsTest {
 
         val result = DateTimeUtils.formatToIsoDate(emptyDateTime)
 
-        assertEquals("", result)
+        assertThat(result).isEmpty()
     }
 
     @Test
@@ -51,7 +50,7 @@ class DateTimeUtilsTest {
 
         val result = DateTimeUtils.formatDateTime(zonedDateTime, "dd/MM/yyyy")
 
-        assertEquals("03/08/2025", result)
+        assertThat(result).isEqualTo("03/08/2025")
     }
 
     @Test
@@ -60,7 +59,7 @@ class DateTimeUtilsTest {
 
         val result = DateTimeUtils.formatDateTime(zonedDateTime, "HH:mm:ss")
 
-        assertTrue(result.matches(Regex("\\d{2}:\\d{2}:\\d{2}")))
+        assertThat(result).matches("\\d{2}:\\d{2}:\\d{2}")
     }
 
     @Test
@@ -73,16 +72,15 @@ class DateTimeUtilsTest {
             Locale.FRANCE
         )
 
-        assertTrue(result.contains("août"), "Expected month to be 'août'")
-        assertTrue(result.contains("2025"))
+        assertThat(result).contains("août")
+        assertThat(result).contains("2025")
     }
-
 
     @Test
     fun `should handle null ZonedDateTime`() {
         val result = DateTimeUtils.formatDateTime(null, "yyyy-MM-dd")
 
-        assertEquals("", result)
+        assertThat(result).isEmpty()
     }
 
     @Test
@@ -91,7 +89,7 @@ class DateTimeUtilsTest {
 
         val result = DateTimeUtils.formatDateTime(zonedDateTime, "invalid-pattern-xyz")
 
-        assertEquals("", result)
+        assertThat(result).isEmpty()
     }
 
     @Test
@@ -105,7 +103,7 @@ class DateTimeUtilsTest {
 
         formats.forEach { format ->
             val result = DateTimeUtils.formatToIsoDate(format)
-            assertEquals("2025-08-03", result, "Failed for format: $format")
+            assertThat(result).isEqualTo("2025-08-03") // Always same date after normalizing
         }
     }
-    }
+}

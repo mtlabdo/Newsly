@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_feature_home_title">Newsly – Latest Headlines</string>
+    <string name="app_feature_home_no_articles_title">No articles available</string>
+    <string name="app_feature_home_no_articles_description">We couldn\'t find any articles to display. Try refreshing to load the latest news.</string>
+    <string name="app_feature_home_refresh_news">Refresh news</string>
+
+</resources>

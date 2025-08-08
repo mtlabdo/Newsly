@@ -1,11 +1,11 @@
 package com.instantsystem.newsly.common.core.exception
 
+import com.google.common.truth.Truth.assertThat
 import com.instantsystem.common.core.exception.NewsError
 import com.instantsystem.common.core.exception.toNewsException
 import org.junit.Test
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
-import kotlin.test.assertEquals
 
 class ExceptionMapperTest {
 
@@ -15,7 +15,7 @@ class ExceptionMapperTest {
 
         val newsException = exception.toNewsException()
 
-        assertEquals(NewsError.NETWORK, newsException.errorType)
+        assertThat(newsException.errorType).isEqualTo(NewsError.NETWORK)
     }
 
     @Test
@@ -24,7 +24,7 @@ class ExceptionMapperTest {
 
         val newsException = exception.toNewsException()
 
-        assertEquals(NewsError.NETWORK, newsException.errorType)
+        assertThat(newsException.errorType).isEqualTo(NewsError.NETWORK)
     }
 
     @Test
@@ -33,7 +33,7 @@ class ExceptionMapperTest {
 
         val newsException = exception.toNewsException()
 
-        assertEquals(NewsError.UNKNOWN, newsException.errorType)
+        assertThat(newsException.errorType).isEqualTo(NewsError.UNKNOWN)
     }
 
     @Test
@@ -42,7 +42,7 @@ class ExceptionMapperTest {
 
         val newsException = exception.toNewsException()
 
-        assertEquals(NewsError.UNKNOWN, newsException.errorType)
+        assertThat(newsException.errorType).isEqualTo(NewsError.UNKNOWN)
     }
 
     @Test
@@ -51,7 +51,7 @@ class ExceptionMapperTest {
 
         val newsException = originalException.toNewsException()
 
-        assertEquals("UNKNOWN", newsException.message)
-        assertEquals(NewsError.UNKNOWN, newsException.errorType)
+        assertThat(newsException.message).isEqualTo("UNKNOWN")
+        assertThat(newsException.errorType).isEqualTo(NewsError.UNKNOWN)
     }
 }
