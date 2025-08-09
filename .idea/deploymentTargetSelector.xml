@@ -22,9 +22,6 @@
       <SelectionState runConfigName="NewslyNavHostIntegrationTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="should display NavHost with NewslyAppDI()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
     </selectionStates>
   </component>
 </project>
