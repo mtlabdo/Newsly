@@ -23,7 +23,6 @@ fun NewslyNavHost(
     modifier: Modifier = Modifier,
 ) {
     val backStack = rememberNavBackStack<NavKey>(Home)
-    val browserNavigator: IBrowserNavigator = koinInject()
 
     NavDisplay(
         modifier = modifier,
@@ -49,11 +48,12 @@ fun NewslyNavHost(
 
                is Detail -> {
                    NavEntry(key = key) {
-                        DetailScreen(
+                       val browserNavigator: IBrowserNavigator = koinInject()
+                       DetailScreen(
                             viewModel =  koinViewModel { parametersOf(key.article) },
                             onNavigateBack = { backStack.removeLastOrNull() },
                             onOpenInBrowser = { url ->
-                                browserNavigator.openUrl(url = url)
+                                browserNavigator.openUrl(url)
                             }
                         )
                     }

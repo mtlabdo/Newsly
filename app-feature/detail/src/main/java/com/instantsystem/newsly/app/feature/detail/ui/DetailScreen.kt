@@ -27,12 +27,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.instantsystem.app.feature.detail.R
 import com.instantsystem.common.core.util.DateTimeUtils
+import com.instantsystem.common.core.util.IBrowserNavigator
 import com.instantsystem.newsly.app.common.ui.components.DynamicAsyncImage
 import com.instantsystem.newsly.app.common.ui.components.NewslyHeader
 import com.instantsystem.newsly.designsystem.components.NewslyCard
 import com.instantsystem.newsly.designsystem.resources.icon.NewslyIcons
 import com.instantsystem.newsly.designsystem.tokens.NewslySpacing
 import com.instantsystem.newsly.domain.model.Article
+import org.koin.compose.koinInject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
