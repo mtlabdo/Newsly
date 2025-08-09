@@ -34,7 +34,7 @@ class NewslyNavHostIntegrationTest {
     fun setup() {
         Dispatchers.setMain(testDispatcher)
         getTopHeadlinesUseCase = mockk()
-        every  getTopHeadlinesUseCase() } returns flowOf()
+        every { getTopHeadlinesUseCase() } returns flowOf()
         viewModel = HomeViewModel(getTopHeadlinesUseCase, testDispatcher)
     }
     
