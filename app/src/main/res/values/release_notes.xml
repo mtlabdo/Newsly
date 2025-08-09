@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ReleaseNotes" translatable="false">
+        Newsly v1.0 !\n\n
+
+        Nouvelles fonctionnalités :\n
+        • Consultation des actualités en temps réel\n
+        • Vue détaillée de chaque article\n
+        • Actualisation par glissement vers le bas\n
+        • Lecture complète sur site officiel\n
+        • Interface moderne et intuitive\n\n
+    </string>
+</resources>
